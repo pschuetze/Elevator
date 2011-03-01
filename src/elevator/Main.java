@@ -4,6 +4,8 @@
  */
 package elevator;
 
+import com.sun.org.apache.xpath.internal.axes.SelfIteratorNoPredicate;
+
 /**
  *
  * @author martin
@@ -36,7 +38,10 @@ public class Main {
         System.out.println("Elevators: " + Globals.elevators);
         System.out.println("Levels: " + Globals.levels);
 
-        Building building = new Building(Globals.levels, Globals.elevators);
+        Run run = new Run();
+        run.init();
+        run.drawLayout();
+        System.out.println(run.building.getElevators());
         
 
         System.out.print("Ende");
