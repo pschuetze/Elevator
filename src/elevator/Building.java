@@ -10,8 +10,8 @@ package elevator;
  * @author martin
  */
 public class Building {
-    private int _levels;
-    private int _elevators;
+    private int _levelsNum;
+    private int _elevatorsNum;
 
     private Level[] _arrLevels;;
     private Elevator[] _arrElevators;
@@ -20,8 +20,8 @@ public class Building {
         this.setLevels(levels)
                 .setElevators(elevators);
 
-        this._arrLevels = new Level[this._levels];
-        this._arrElevators  = new Elevator[this._elevators];
+        this._arrLevels = new Level[this._levelsNum];
+        this._arrElevators  = new Elevator[this._elevatorsNum];
 
         for (int i = 0; i < this._arrLevels.length; i++) {
             this._arrLevels[i] = new Level(i);
@@ -36,32 +36,32 @@ public class Building {
 
 
     /**
-     * @return the _levels
+     * @return the _levelsNum
      */
     public int getLevels() {
-        return _levels;
+        return _levelsNum;
     }
 
     /**
-     * @param levels the _levels to set
+     * @param levels the _levelsNum to set
      */
     private Building setLevels(int levels) {
-        this._levels = levels;
+        this._levelsNum = levels;
         return this;
     }
 
     /**
-     * @return the _elevators
+     * @return the _elevatorsNum
      */
     public int getElevators() {
-        return _elevators;
+        return _elevatorsNum;
     }
 
     /**
-     * @param elevators the _elevators to set
+     * @param elevators the _elevatorsNum to set
      */
     private Building setElevators(int elevators) {
-        this._elevators = elevators;
+        this._elevatorsNum = elevators;
         return this;
     }
 
