@@ -5,6 +5,9 @@
 
 package elevator;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+
 /**
  *
  * @author martin
@@ -16,14 +19,21 @@ public class FloorPanel extends Panel{
     public FloorPanel(Globals.LevelKind levelKind){
         switch(levelKind){
             case LOWEST:
-                    this._buttonUp = true;
+                    _buttonUp = true;
                     break;
             case BETWEEN:
-                this._buttonUp = true;
-                this._buttonDown = true;
+                _buttonUp = true;
+                _buttonDown = true;
                 break;
             case HIGHEST:
-                this._buttonDown = true;
+                _buttonDown = true;
+        }
+
+        if(_buttonDown){
+            add(new JButton("Down"));
+        }
+        if(_buttonUp){
+            add(new JButton("Up"));
         }
 
 

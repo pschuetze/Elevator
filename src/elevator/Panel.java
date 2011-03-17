@@ -5,10 +5,12 @@
 
 package elevator;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author martin
  */
-public abstract class Panel {
+public abstract class Panel extends JPanel{
     
 }

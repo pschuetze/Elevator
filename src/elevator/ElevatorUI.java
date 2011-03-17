@@ -57,6 +57,7 @@ public class ElevatorUI extends javax.swing.JFrame {
         elevatorsLabel = new javax.swing.JLabel();
         elevatorsInputNum = new javax.swing.JSpinner();
         startButton = new javax.swing.JButton();
+        stage = new javax.swing.JPanel();
         building = new javax.swing.JPanel();
         elevator0 = new javax.swing.JPanel();
         level0_2 = new javax.swing.JPanel();
@@ -98,11 +99,12 @@ public class ElevatorUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         toolBar.setRollover(true);
+        toolBar.setPreferredSize(new java.awt.Dimension(340, 31));
 
         levelLabel.setText("Levels:");
         toolBar.add(levelLabel);
 
-        levelsInputNum.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(1), Integer.valueOf(1), null, Integer.valueOf(1)));
+        levelsInputNum.setModel(new javax.swing.SpinnerNumberModel(Integer.valueOf(2), Integer.valueOf(2), null, Integer.valueOf(1)));
         toolBar.add(levelsInputNum);
 
         elevatorsLabel.setText("Elevators:");
@@ -122,14 +124,17 @@ public class ElevatorUI extends javax.swing.JFrame {
         });
         toolBar.add(startButton);
 
+        stage.setLayout(new java.awt.GridLayout());
+
         building.setAutoscrolls(true);
-        building.setLayout(new java.awt.GridLayout());
+        building.setPreferredSize(new java.awt.Dimension(600, 600));
+        building.setLayout(new java.awt.GridLayout(1, 0));
 
         elevator0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         elevator0.setLayout(new java.awt.GridLayout(0, 1));
 
         level0_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        level0_2.setLayout(new java.awt.GridLayout());
+        level0_2.setLayout(new java.awt.GridLayout(1, 0));
 
         cabin0_2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -137,11 +142,11 @@ public class ElevatorUI extends javax.swing.JFrame {
         cabin0_2.setLayout(cabin0_2Layout);
         cabin0_2Layout.setHorizontalGroup(
             cabin0_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 139, Short.MAX_VALUE)
         );
         cabin0_2Layout.setVerticalGroup(
             cabin0_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 147, Short.MAX_VALUE)
+            .addGap(0, 133, Short.MAX_VALUE)
         );
 
         level0_2.add(cabin0_2);
@@ -156,8 +161,7 @@ public class ElevatorUI extends javax.swing.JFrame {
         floor0_2.setLayout(floor0_2Layout);
         floor0_2Layout.setHorizontalGroup(
             floor0_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 139, Short.MAX_VALUE)
             .addGroup(floor0_2Layout.createSequentialGroup()
                 .addGap(35, 35, 35)
                 .addComponent(levelLabel0_2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -167,8 +171,7 @@ public class ElevatorUI extends javax.swing.JFrame {
         );
         floor0_2Layout.setVerticalGroup(
             floor0_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 147, Short.MAX_VALUE)
-            .addGap(0, 147, Short.MAX_VALUE)
+            .addGap(0, 133, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, floor0_2Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(floor0_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -182,7 +185,7 @@ public class ElevatorUI extends javax.swing.JFrame {
         elevator0.add(level0_2);
 
         level0_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        level0_1.setLayout(new java.awt.GridLayout());
+        level0_1.setLayout(new java.awt.GridLayout(1, 0));
 
         cabin0_1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -190,11 +193,11 @@ public class ElevatorUI extends javax.swing.JFrame {
         cabin0_1.setLayout(cabin0_1Layout);
         cabin0_1Layout.setHorizontalGroup(
             cabin0_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 239, Short.MAX_VALUE)
+            .addGap(0, 139, Short.MAX_VALUE)
         );
         cabin0_1Layout.setVerticalGroup(
             cabin0_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 147, Short.MAX_VALUE)
+            .addGap(0, 133, Short.MAX_VALUE)
         );
 
         level0_1.add(cabin0_1);
@@ -223,18 +226,17 @@ public class ElevatorUI extends javax.swing.JFrame {
                 .addComponent(buttonUp0_1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonDown0_1)
-                .addGap(64, 64, 64))
+                .addGap(144, 144, 144))
         );
         floor0_1Layout.setVerticalGroup(
             floor0_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 147, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, floor0_1Layout.createSequentialGroup()
                 .addGap(69, 69, 69)
                 .addGroup(floor0_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(levelLabel0_1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonUp0_1)
                     .addComponent(buttonDown0_1))
-                .addGap(49, 49, 49))
+                .addGap(134, 134, 134))
         );
 
         level0_1.add(floor0_1);
@@ -242,10 +244,10 @@ public class ElevatorUI extends javax.swing.JFrame {
         elevator0.add(level0_1);
 
         level0_0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        level0_0.setLayout(new java.awt.GridLayout());
+        level0_0.setLayout(new java.awt.GridLayout(1, 0));
 
         cabin0_0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-        cabin0_0.setLayout(new java.awt.GridLayout());
+        cabin0_0.setLayout(new java.awt.GridLayout(1, 0));
 
         cabinReal0.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -277,16 +279,16 @@ public class ElevatorUI extends javax.swing.JFrame {
                 .addComponent(cabinButton0_1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cabinButton0_2)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cabinReal0Layout.createSequentialGroup()
                 .addContainerGap(97, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(104, 104, 104))
+                .addGap(184, 184, 184))
         );
         cabinReal0Layout.setVerticalGroup(
             cabinReal0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, cabinReal0Layout.createSequentialGroup()
-                .addContainerGap(52, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(cabinReal0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -315,7 +317,7 @@ public class ElevatorUI extends javax.swing.JFrame {
                 .addComponent(levelLabel0_0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(buttonUp0_0)
-                .addGap(117, 117, 117))
+                .addGap(197, 197, 197))
         );
         floor0_0Layout.setVerticalGroup(
             floor0_0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -324,7 +326,7 @@ public class ElevatorUI extends javax.swing.JFrame {
                 .addGroup(floor0_0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(levelLabel0_0, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(buttonUp0_0))
-                .addGap(49, 49, 49))
+                .addGap(134, 134, 134))
         );
 
         level0_0.add(floor0_0);
@@ -335,17 +337,17 @@ public class ElevatorUI extends javax.swing.JFrame {
 
         elevator1.setLayout(new java.awt.GridLayout(0, 1));
 
-        level1_2.setLayout(new java.awt.GridLayout());
+        level1_2.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout cabin1_2Layout = new javax.swing.GroupLayout(cabin1_2);
         cabin1_2.setLayout(cabin1_2Layout);
         cabin1_2Layout.setHorizontalGroup(
             cabin1_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         cabin1_2Layout.setVerticalGroup(
             cabin1_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 138, Short.MAX_VALUE)
         );
 
         level1_2.add(cabin1_2);
@@ -354,28 +356,28 @@ public class ElevatorUI extends javax.swing.JFrame {
         floor1_2.setLayout(floor1_2Layout);
         floor1_2Layout.setHorizontalGroup(
             floor1_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         floor1_2Layout.setVerticalGroup(
             floor1_2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 138, Short.MAX_VALUE)
         );
 
         level1_2.add(floor1_2);
 
         elevator1.add(level1_2);
 
-        level1_1.setLayout(new java.awt.GridLayout());
+        level1_1.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout cabin1_1Layout = new javax.swing.GroupLayout(cabin1_1);
         cabin1_1.setLayout(cabin1_1Layout);
         cabin1_1Layout.setHorizontalGroup(
             cabin1_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         cabin1_1Layout.setVerticalGroup(
             cabin1_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 138, Short.MAX_VALUE)
         );
 
         level1_1.add(cabin1_1);
@@ -384,28 +386,28 @@ public class ElevatorUI extends javax.swing.JFrame {
         floor1_1.setLayout(floor1_1Layout);
         floor1_1Layout.setHorizontalGroup(
             floor1_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         floor1_1Layout.setVerticalGroup(
             floor1_1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 138, Short.MAX_VALUE)
         );
 
         level1_1.add(floor1_1);
 
         elevator1.add(level1_1);
 
-        level1_0.setLayout(new java.awt.GridLayout());
+        level1_0.setLayout(new java.awt.GridLayout(1, 0));
 
         javax.swing.GroupLayout cabin1_0Layout = new javax.swing.GroupLayout(cabin1_0);
         cabin1_0.setLayout(cabin1_0Layout);
         cabin1_0Layout.setHorizontalGroup(
             cabin1_0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         cabin1_0Layout.setVerticalGroup(
             cabin1_0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 138, Short.MAX_VALUE)
         );
 
         level1_0.add(cabin1_0);
@@ -414,11 +416,11 @@ public class ElevatorUI extends javax.swing.JFrame {
         floor1_0.setLayout(floor1_0Layout);
         floor1_0Layout.setHorizontalGroup(
             floor1_0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 243, Short.MAX_VALUE)
+            .addGap(0, 143, Short.MAX_VALUE)
         );
         floor1_0Layout.setVerticalGroup(
             floor1_0Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 152, Short.MAX_VALUE)
+            .addGap(0, 138, Short.MAX_VALUE)
         );
 
         level1_0.add(floor1_0);
@@ -426,6 +428,8 @@ public class ElevatorUI extends javax.swing.JFrame {
         elevator1.add(level1_0);
 
         building.add(elevator1);
+
+        stage.add(building);
 
         fileMenu.setText("File");
 
@@ -449,23 +453,23 @@ public class ElevatorUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 972, Short.MAX_VALUE)
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 599, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(building, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                    .addContainerGap()
+                    .addComponent(stage, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(425, Short.MAX_VALUE))
+                .addContainerGap(431, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 0, Short.MAX_VALUE)
-                    .addComponent(building, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 0, Short.MAX_VALUE)))
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                    .addContainerGap(35, Short.MAX_VALUE)
+                    .addComponent(stage, javax.swing.GroupLayout.PREFERRED_SIZE, 415, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap()))
         );
 
         pack();
@@ -486,7 +490,10 @@ public class ElevatorUI extends javax.swing.JFrame {
         startButton.setText("Restart");
         System.out.println(startButton.getSize());
         
-        Building building = Bootstrap.init((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue());
+//        Building building = Bootstrap.init((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), stage);
+        Building building = new Building((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue());
+
+        stage.add(building);
         System.out.println("Yes!");
     }//GEN-LAST:event_startButtonActionPerformed
 
@@ -555,6 +562,7 @@ public class ElevatorUI extends javax.swing.JFrame {
     private javax.swing.JLabel levelLabel0_2;
     private javax.swing.JSpinner levelsInputNum;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JPanel stage;
     private javax.swing.JButton startButton;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables

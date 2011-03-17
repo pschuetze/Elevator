@@ -4,8 +4,6 @@
  */
 package elevator;
 
-import com.sun.org.apache.xpath.internal.axes.SelfIteratorNoPredicate;
-
 /**
  *
  * @author martin
@@ -42,7 +40,6 @@ public class Main {
         Building building = Bootstrap.init(Globals.levels, Globals.elevators);
 
         System.out.println(building.getElevators());
-        
 
         System.out.print("Ende");
 

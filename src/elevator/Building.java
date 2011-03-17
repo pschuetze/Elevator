@@ -5,49 +5,32 @@
 
 package elevator;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.swing.JPanel;
+
 /**
  *
  * @author martin
  */
-public class Building {
-    private int _levelsNum;
+public class Building extends javax.swing.JPanel{
+    
     private int _elevatorsNum;
-
-    private Level[] _arrLevels;;
-    private Elevator[] _arrElevators;
+    private List<Elevator> _elevatorsList;
 
     public Building(int levels, int elevators){
-        this.setLevels(levels)
-                .setElevators(elevators);
+        Elevator elevator;
+        _elevatorsList  = new ArrayList<Elevator>();
 
-        this._arrLevels = new Level[this._levelsNum];
-        this._arrElevators  = new Elevator[this._elevatorsNum];
+        setElevators(elevators);
 
-        for (int i = 0; i < this._arrLevels.length; i++) {
-            this._arrLevels[i] = new Level(i);
+        setLayout(new java.awt.GridLayout(1, 0));
+
+        for (int i = 0; i < _elevatorsNum; i++){
+            elevator = new Elevator(i, levels);
+            _elevatorsList.add(elevator);
+            add(elevator); //adding new elevator to JPanel building
         }
-
-        for (int i = 0; i < this._arrElevators.length; i++){
-            this._arrElevators[i] = new Elevator(i);
-        }
-
-    }
-
-
-
-    /**
-     * @return the _levelsNum
-     */
-    public int getLevels() {
-        return _levelsNum;
-    }
-
-    /**
-     * @param levels the _levelsNum to set
-     */
-    private Building setLevels(int levels) {
-        this._levelsNum = levels;
-        return this;
     }
 
     /**
@@ -67,19 +50,10 @@ public class Building {
 
     /**
      *
-     * @param numLevel
-     * @return Level
-     */
-    public Level fetchLevelByNum(int numLevel) {
-        return _arrLevels[numLevel];
-    }
-
-    /**
-     *
      * @param numElevator
      * @return Elevator
      */
     public Elevator fetchElevatorByNum(int numElevator) {
-        return _arrElevators[numElevator];
+        return _elevatorsList.get(numElevator);
     }
 }

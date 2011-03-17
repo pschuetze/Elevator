@@ -4,6 +4,8 @@
  */
 package elevator;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author martin

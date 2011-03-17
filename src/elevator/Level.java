@@ -5,35 +5,42 @@
 
 package elevator;
 
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
 /**
  *
  * @author martin
  */
-public class Level {
+public class Level extends JPanel{
 
     private int _levelNum;
     private FloorPanel _floorPanel;
     private Globals.LevelKind _kind;
 
-    public Level(int levelNum){
-        this.setLevelNum(levelNum);
+    public Level(int levelNum, Elevator elevator){
+        setLevelNum(levelNum);
+
+        setLayout(new java.awt.GridLayout(0, 1));
 
         if(levelNum == 0){
-            this._kind = Globals.LevelKind.LOWEST;
-        }else if(levelNum == (Globals.levels -1)){
-            this._kind = Globals.LevelKind.HIGHEST;
+            _kind = Globals.LevelKind.LOWEST;
+        }else if(levelNum == elevator.getLevels() - 1){
+            _kind = Globals.LevelKind.HIGHEST;
         }else{
-            this._kind = Globals.LevelKind.BETWEEN;
+            _kind = Globals.LevelKind.BETWEEN;
         }
 
-        this._floorPanel = new FloorPanel(this._kind);
+        _floorPanel = new FloorPanel(_kind);
+        add(_floorPanel);
+        add(new JLabel("Level " + getLevelNum()));
 
     }
 
     /**
      * @return the _levelNum
      */
-    public int getLevelNum() {
+    public final int getLevelNum() {
         return _levelNum;
     }
 
