@@ -27,7 +27,7 @@ public class Elevator extends JPanel{
         setElevatorNum(elevatorNum)
                 .setLevels(levelsNum);
 
-        setLayout(new java.awt.GridLayout(1, 0));
+        setLayout(new java.awt.GridLayout(0, 1));
 
         for (int i = 0; i < _levelsNum; i++) {
             level = new Level(i, this);

@@ -21,7 +21,7 @@ public class Level extends JPanel{
     public Level(int levelNum, Elevator elevator){
         setLevelNum(levelNum);
 
-        setLayout(new java.awt.GridLayout(0, 1));
+        setLayout(new java.awt.GridLayout(1, 0));
 
         if(levelNum == 0){
             _kind = Globals.LevelKind.LOWEST;
