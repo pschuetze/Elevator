@@ -11,9 +11,11 @@
 
 package elevator;
 
+import java.awt.BorderLayout;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JScrollPane;
 
 /**
  *
@@ -119,9 +121,9 @@ public class ElevatorUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 24, Short.MAX_VALUE)
-                    .addComponent(stage, javax.swing.GroupLayout.PREFERRED_SIZE, 550, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 25, Short.MAX_VALUE)))
+                    .addGap(0, 299, Short.MAX_VALUE)
+                    .addComponent(stage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 300, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -131,9 +133,9 @@ public class ElevatorUI extends javax.swing.JFrame {
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 35, Short.MAX_VALUE)
-                    .addComponent(stage, javax.swing.GroupLayout.PREFERRED_SIZE, 394, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 35, Short.MAX_VALUE)))
+                    .addGap(0, 232, Short.MAX_VALUE)
+                    .addComponent(stage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 232, Short.MAX_VALUE)))
         );
 
         pack();
@@ -160,8 +162,11 @@ public class ElevatorUI extends javax.swing.JFrame {
 
         stage.removeAll();
         stage.add(building);
+
+        pack();
 //        stageScrolling.add(building);
         System.out.println("Yes!");
+
     }//GEN-LAST:event_startButtonActionPerformed
 
    /**
