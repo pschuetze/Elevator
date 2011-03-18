@@ -2,7 +2,6 @@
  * To change this template, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package elevator;
 
 import javax.swing.JLabel;
@@ -12,29 +11,42 @@ import javax.swing.JPanel;
  *
  * @author martin
  */
-public class Level extends JPanel{
+public class Level extends JPanel {
 
     private int _levelNum;
     private FloorPanel _floorPanel;
     private Globals.LevelKind _kind;
+    private JPanel _sparsePanel;
 
-    public Level(int levelNum, Elevator elevator){
+    public Level(int levelNum, Elevator elevator) {
         setLevelNum(levelNum);
 
-        setLayout(new java.awt.GridLayout(1, 0));
+        _sparsePanel = new JPanel();
 
-        if(levelNum == 0){
+        setLayout(new java.awt.GridLayout(1, 0));
+        setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
+
+        if (levelNum == 1) {
             _kind = Globals.LevelKind.LOWEST;
-        }else if(levelNum == elevator.getLevels() - 1){
+        } else if (levelNum == elevator.getLevels()) {
             _kind = Globals.LevelKind.HIGHEST;
-        }else{
+        } else {
             _kind = Globals.LevelKind.BETWEEN;
         }
 
         _floorPanel = new FloorPanel(_kind);
-        add(_floorPanel);
         add(new JLabel("Level " + getLevelNum()));
+        add(_floorPanel);
+        add(_sparsePanel);
 
+    }
+
+    /**
+     * 
+     * @return
+     */
+    public JPanel getSparsePanel() {
+        return _sparsePanel;
     }
 
     /**

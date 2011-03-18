@@ -6,7 +6,6 @@
 package elevator;
 
 import javax.swing.JButton;
-import javax.swing.JLabel;
 
 /**
  *

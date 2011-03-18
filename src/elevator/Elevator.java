@@ -20,20 +20,24 @@ public class Elevator extends JPanel{
     private Cabin _cabin;
 
     public Elevator(int elevatorNum, int levelsNum) {
-        _cabin = new Cabin();
-        _levelsList = new ArrayList<Level>();
         Level level;
 
         setElevatorNum(elevatorNum)
-                .setLevels(levelsNum);
+                .setLevels(levelsNum)
+                .setLayout(new java.awt.GridLayout(0, 1));
 
-        setLayout(new java.awt.GridLayout(0, 1));
+        _cabin = new Cabin(this);
+        _levelsList = new ArrayList<Level>();
 
-        for (int i = 0; i < _levelsNum; i++) {
+        for (int i = _levelsNum; i != 0; i--) {
             level = new Level(i, this);
             _levelsList.add(level);
             add(level);
         }
+
+        Level firstLevel = fetchLevelByNum(1);
+        firstLevel.remove(firstLevel.getSparsePanel());
+        firstLevel.add(_cabin);
     }
 
     /**
@@ -41,8 +45,11 @@ public class Elevator extends JPanel{
      * @param numLevel
      * @return Level
      */
-    public Level fetchLevelByNum(int numLevel) {
-        return _levelsList.get(numLevel);
+    public final Level fetchLevelByNum(int numLevel) {
+
+        int listIndex = _levelsNum - numLevel; // inverting the level identifier to get the List index
+
+        return _levelsList.get(listIndex);
     }
 
     /**

@@ -5,15 +5,18 @@
 
 package elevator;
 
+import javax.swing.JPanel;
+
 /**
  *
  * @author martin
  */
-public class Cabin {
+public class Cabin extends JPanel{
     private CabinPanel _cabinPanel;
 
-    public Cabin(){
-        this._cabinPanel = new CabinPanel();
+    public Cabin(Elevator elevator){
+        _cabinPanel = new CabinPanel(elevator.getLevels());
+        add(_cabinPanel);
     }
 
     /**
