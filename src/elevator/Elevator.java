@@ -35,9 +35,13 @@ public class Elevator extends JPanel{
             add(level);
         }
 
-        Level firstLevel = fetchLevelByNum(1);
-        firstLevel.remove(firstLevel.getSparsePanel());
-        firstLevel.add(_cabin);
+        moveCabin(1);
+    }
+
+    public final void moveCabin(int destLevelNum){
+        Level desttLevelObj = fetchLevelByNum(destLevelNum);
+        desttLevelObj.remove(desttLevelObj.getSparsePanel());
+        desttLevelObj.add(_cabin);
     }
 
     /**

@@ -15,7 +15,7 @@ public class Cabin extends JPanel{
     private CabinPanel _cabinPanel;
 
     public Cabin(Elevator elevator){
-        _cabinPanel = new CabinPanel(elevator.getLevels());
+        _cabinPanel = new CabinPanel(elevator);
         add(_cabinPanel);
     }
 
