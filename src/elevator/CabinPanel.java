@@ -7,6 +7,7 @@ package elevator;
 import elevator.Globals.directionType;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.HashMap;
 import javax.swing.JButton;
 
 /**
@@ -16,6 +17,7 @@ import javax.swing.JButton;
 public class CabinPanel extends Panel {
 
     private Elevator _elevator;
+    private HashMap<Integer, JButton> _panelNumberButtons = new HashMap<Integer, JButton>();
     private ActionListener _cabinButtonActionListener = new java.awt.event.ActionListener() {
 
         @Override
@@ -32,13 +34,15 @@ public class CabinPanel extends Panel {
             cabinButton = new JButton(String.valueOf(i));
             cabinButton.addActionListener(_cabinButtonActionListener);
             add(cabinButton);
+            _panelNumberButtons.put(i, cabinButton);
 
         }
     }
 
     private void cabinButtonActionPerformed(ActionEvent evt) {
-
         int destLevelNum = Integer.parseInt(evt.getActionCommand());
+        JButton myButton = _panelNumberButtons.get(destLevelNum);
+
         directionType direction;
         int currentLevel = _elevator.getCabin().getCurrentLevel();
 
@@ -46,7 +50,9 @@ public class CabinPanel extends Panel {
             return;
         }
 
+        myButton.setEnabled(false);
+
         direction = destLevelNum > currentLevel ? directionType.UP : directionType.DOWN;
-        _elevator.getCallList().add(new CallListEntry(direction, destLevelNum));
+        _elevator.getCallList().addCall(new CallListEntry(direction, destLevelNum));
     }
 }

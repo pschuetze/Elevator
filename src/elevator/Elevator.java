@@ -4,8 +4,7 @@
  */
 package elevator;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import javax.swing.JPanel;
 
 /**
@@ -15,7 +14,7 @@ import javax.swing.JPanel;
 public class Elevator extends JPanel {
 
     private int _levelsNum;
-    private List<Level> _levelsList = new ArrayList<Level>();
+    private HashMap<Integer, Level> _levelsList = new HashMap<Integer, Level>();
     private int _elevatorNum;
     private Cabin _cabin;
     private CallList _callList = new CallList();
@@ -29,7 +28,7 @@ public class Elevator extends JPanel {
 
         for (int i = _levelsNum; i != 0; i--) {
             level = new Level(i, this);
-            _levelsList.add(level);
+            _levelsList.put(i, level);
             add(level);
         }
 
@@ -57,9 +56,9 @@ public class Elevator extends JPanel {
      */
     public final Level fetchLevelByNum(int numLevel) {
 
-        int listIndex = _levelsNum - numLevel; // inverting the level identifier to get the List index
+//        int listIndex = _levelsNum - numLevel; // inverting the level identifier to get the List index
 
-        return _levelsList.get(listIndex);
+        return _levelsList.get(numLevel);
     }
 
     /**

@@ -11,11 +11,9 @@
 
 package elevator;
 
-import java.awt.BorderLayout;
 import java.text.ParseException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JScrollPane;
 
 /**
  *
@@ -59,6 +57,7 @@ public class ElevatorUI extends javax.swing.JFrame {
         elevatorsLabel = new javax.swing.JLabel();
         elevatorsInputNum = new javax.swing.JSpinner();
         startButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         stage = new javax.swing.JPanel();
         menuBar = new javax.swing.JMenuBar();
@@ -93,6 +92,12 @@ public class ElevatorUI extends javax.swing.JFrame {
             }
         });
         toolBar.add(startButton);
+
+        jButton1.setText("Hold");
+        jButton1.setFocusable(false);
+        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(jButton1);
 
         stage.setLayout(new java.awt.GridLayout(1, 0));
         jScrollPane1.setViewportView(stage);
@@ -181,6 +186,7 @@ public class ElevatorUI extends javax.swing.JFrame {
     private javax.swing.JSpinner elevatorsInputNum;
     private javax.swing.JLabel elevatorsLabel;
     private javax.swing.JMenu fileMenu;
+    private javax.swing.JButton jButton1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel levelLabel;
