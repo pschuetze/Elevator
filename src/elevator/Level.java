@@ -4,6 +4,7 @@
  */
 package elevator;
 
+import elevator.Globals.levelKind;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -15,7 +16,7 @@ public class Level extends JPanel {
 
     private int _levelNum;
     private FloorPanel _floorPanel;
-    private Globals.LevelKind _kind;
+    private levelKind _kind;
     private JPanel _sparsePanel;
 
     public Level(int levelNum, Elevator elevator) {
@@ -27,18 +28,26 @@ public class Level extends JPanel {
         setBorder(new javax.swing.border.LineBorder(new java.awt.Color(0, 0, 0), 1, true));
 
         if (levelNum == 1) {
-            _kind = Globals.LevelKind.LOWEST;
+            _kind = levelKind.LOWEST;
         } else if (levelNum == elevator.getLevels()) {
-            _kind = Globals.LevelKind.HIGHEST;
+            _kind = levelKind.HIGHEST;
         } else {
-            _kind = Globals.LevelKind.BETWEEN;
+            _kind = levelKind.BETWEEN;
         }
 
-        _floorPanel = new FloorPanel(_kind);
+        _floorPanel = new FloorPanel(_kind, elevator, levelNum);
         add(new JLabel("Level " + getLevelNum()));
         add(_floorPanel);
         add(_sparsePanel);
 
+    }
+
+    public void toggleSparsePanel(Boolean state){
+        if(state){
+            add(_sparsePanel);
+        }else{
+            remove(_sparsePanel);
+        }
     }
 
     /**

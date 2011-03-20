@@ -15,8 +15,13 @@ Publisher: O'Reilly
 //A simple JScrollPane demonstration.
 //
 
+import com.sun.org.apache.xpath.internal.operations.Equals;
 import java.awt.BorderLayout;
 import java.awt.GridLayout;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JFrame;
@@ -68,6 +73,24 @@ public class TestClass extends JFrame {
   }
 
   public static void main(String args[]) {
-    new TestClass();
+//    new TestClass();
+      Set<CallListEntry> testSet = new HashSet<CallListEntry>();
+      
+      CallListEntry A = new CallListEntry(Globals.directionType.DOWN, 1);
+      CallListEntry B = new CallListEntry(Globals.directionType.DOWN, 1);
+
+      testSet.add(A);
+      testSet.add(B);
+
+     String teststringA = "hallo";
+     String teststringB = "hallo";
+
+     System.out.println("stringcomp: " + teststringA.equals(teststringB));
+      System.out.println(A.equals(B));
+      System.out.println(A.hashCode());
+      System.out.println(B.hashCode());
+
+      System.out.println(testSet.size());
+      System.out.println(testSet.toString());
   }
 }

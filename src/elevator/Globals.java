@@ -12,5 +12,6 @@ package elevator;
 public class Globals {
     public static int levels;
     public static int elevators;
-    public enum LevelKind {HIGHEST,LOWEST,BETWEEN};
+    public enum levelKind {HIGHEST,LOWEST,BETWEEN};
+    public enum directionType {UP,DOWN};
 }

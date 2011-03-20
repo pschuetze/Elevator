@@ -144,7 +144,7 @@ public class ElevatorUI extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        try {
+       try {
             levelsInputNum.commitEdit();
             elevatorsInputNum.commitEdit();
         } catch (ParseException ex) {
@@ -152,7 +152,6 @@ public class ElevatorUI extends javax.swing.JFrame {
         }
 
         startButton.setText("Restart");
-        System.out.println(startButton.getSize());
         
 //        Building building = Bootstrap.init((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), stage);
         Building building = new Building((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue());

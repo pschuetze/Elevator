@@ -13,10 +13,12 @@ import javax.swing.JPanel;
  */
 public class Cabin extends JPanel{
     private CabinPanel _cabinPanel;
+    private int _currentLevel = 1;
 
     public Cabin(Elevator elevator){
         _cabinPanel = new CabinPanel(elevator);
         add(_cabinPanel);
+
     }
 
     /**
@@ -24,6 +26,15 @@ public class Cabin extends JPanel{
      */
     public CabinPanel getCabinPanel() {
         return _cabinPanel;
+    }
+
+    public int getCurrentLevel() {
+        return _currentLevel;
+    }
+
+    public Cabin setCurrentLevel(int _currentLevel) {
+        this._currentLevel = _currentLevel;
+        return this;
     }
 
 }

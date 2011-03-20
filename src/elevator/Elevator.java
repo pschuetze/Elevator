@@ -12,22 +12,20 @@ import javax.swing.JPanel;
  *
  * @author martin
  */
-public class Elevator extends JPanel{
+public class Elevator extends JPanel {
 
     private int _levelsNum;
-    private List<Level> _levelsList;
+    private List<Level> _levelsList = new ArrayList<Level>();
     private int _elevatorNum;
     private Cabin _cabin;
+    private CallList _callList = new CallList();
 
     public Elevator(int elevatorNum, int levelsNum) {
         Level level;
 
-        setElevatorNum(elevatorNum)
-                .setLevels(levelsNum)
-                .setLayout(new java.awt.GridLayout(0, 1));
+        setElevatorNum(elevatorNum).setLevels(levelsNum).setLayout(new java.awt.GridLayout(0, 1));
 
         _cabin = new Cabin(this);
-        _levelsList = new ArrayList<Level>();
 
         for (int i = _levelsNum; i != 0; i--) {
             level = new Level(i, this);
@@ -38,10 +36,18 @@ public class Elevator extends JPanel{
         moveCabin(1);
     }
 
-    public final void moveCabin(int destLevelNum){
+    public final void moveCabin(int destLevelNum) {
         Level desttLevelObj = fetchLevelByNum(destLevelNum);
-        desttLevelObj.remove(desttLevelObj.getSparsePanel());
+        Level sourceLevelObj = fetchLevelByNum(_cabin.getCurrentLevel());
+
+        desttLevelObj.toggleSparsePanel(false);
+        if (sourceLevelObj != desttLevelObj) { // in case of initial move at startup don't reenable the sparsepanel
+            sourceLevelObj.remove(_cabin);
+            sourceLevelObj.toggleSparsePanel(true);
+        }
         desttLevelObj.add(_cabin);
+        repaint();
+
     }
 
     /**
@@ -91,5 +97,9 @@ public class Elevator extends JPanel{
      */
     public Cabin getCabin() {
         return _cabin;
+    }
+
+    public CallList getCallList() {
+        return _callList;
     }
 }
