@@ -4,6 +4,7 @@
  */
 package elevator;
 
+import com.sun.org.apache.bcel.internal.generic.INSTANCEOF;
 import elevator.Globals.directionType;
 import elevator.Globals.levelKind;
 import java.awt.event.ActionEvent;
@@ -80,7 +81,7 @@ public class FloorPanel extends Panel {
      * @return
      */
     public JButton getCallButtonDown() {
-        return _callButtonDown;
+        return _callButtonDown instanceof JButton ? _callButtonDown : new JButton();
     }
     
     /**
@@ -88,6 +89,14 @@ public class FloorPanel extends Panel {
      * @return
      */
     public JButton getCallButtonUp() {
-        return _callButtonUp;
+        return _callButtonUp instanceof JButton ? _callButtonUp : new JButton();
+    }
+
+    public void enableButton(directionType direction){
+        if(direction.equals(directionType.DOWN))
+            getCallButtonDown().setEnabled(true);
+
+        if(direction.equals(directionType.UP))
+            getCallButtonUp().setEnabled(true);
     }
 }

@@ -5,6 +5,7 @@
 package elevator;
 
 import elevator.Globals.directionType;
+import java.util.NoSuchElementException;
 import java.util.SortedSet;
 import java.util.TreeSet;
 import javax.swing.JTextArea;
@@ -62,18 +63,51 @@ public class CallList {
         return this;
     }
 
+    public int popSortedSetInt(SortedSet<Integer> set, boolean left, boolean right, boolean toggleButtons) {
+        int value = 0;
+
+        if (!set.isEmpty()) {
+            if (left) {
+                value = set.first();
+            }
+            if (right) {
+                value = set.last();
+            }
+
+            if (toggleButtons) {
+                removeEntry(value, null);
+            } else {
+                set.remove(value);
+            }
+        } else {
+            throw new NoSuchElementException("Can not pop value from empty set");
+        }
+
+        return value;
+    }
+
     /**
      *
      * @return
      */
     public int getNextStop() {
+        int next;
         checkAndToggleDirection();
 
         switch (_currentDrive) {
             case UP:
-                return Globals.popSortedSetInt(callListUp, true, false);
+                next = popSortedSetInt(callListUp, true, false, true);
+                if (!callListDown.isEmpty() && next == callListDown.last()) { // damit die cabin beim wechsel der liste nicht zweimal auf dem selben level haelt
+                    removeEntry(callListDown.last(), directionType.DOWN);
+                }
+                return next;
             case DOWN:
-                return Globals.popSortedSetInt(callListDown, false, true);
+                next = popSortedSetInt(callListDown, false, true, true);
+
+                if (!callListUp.isEmpty() && next == callListUp.first()) { // damit die cabin beim wechsel der liste nicht zweimal auf dem selben level haelt
+                    removeEntry(callListUp.first(), directionType.UP);
+                }
+                return next;
             case STANDBY:
                 return 0;
             default:
@@ -89,6 +123,7 @@ public class CallList {
             _currentDrive = directionType.STANDBY;
             return;
         }
+
         if (callListDown.isEmpty()) {
             _currentDrive = directionType.UP;
         }
@@ -97,7 +132,17 @@ public class CallList {
         }
     }
 
-    public final void updateCallListArea(){
+    public void removeEntry(int value, directionType directionType) {
+        directionType = directionType instanceof directionType ? directionType : getCurrentDrive();
+
+        SortedSet<Integer> callList = directionType.equals(Globals.directionType.UP)
+                ? callListUp : callListDown;
+        callList.remove(value);
+
+        _elevator.fetchLevelByNum(value).getFloorPanel().enableButton(directionType);
+    }
+
+    public final void updateCallListArea() {
 //        callListTextArea.setText(toString());
         callListTextArea.append(toString());
     }

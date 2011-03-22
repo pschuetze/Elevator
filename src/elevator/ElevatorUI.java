@@ -60,6 +60,9 @@ public class ElevatorUI extends javax.swing.JFrame {
         startButton = new javax.swing.JButton();
         holdButton = new javax.swing.JButton();
         stepButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        autoStepClockSeconds = new javax.swing.JSpinner();
+        autoStepButton = new javax.swing.JButton();
         scrollingStage = new javax.swing.JScrollPane();
         stage = new javax.swing.JPanel();
         callListFrameScrollPane = new javax.swing.JScrollPane();
@@ -123,6 +126,18 @@ public class ElevatorUI extends javax.swing.JFrame {
         stepButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         stepButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(stepButton);
+
+        jLabel1.setText("AutoStep clock seconds:");
+        toolBar.add(jLabel1);
+
+        autoStepClockSeconds.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(1.0f), Float.valueOf(0.1f), null, Float.valueOf(0.5f)));
+        toolBar.add(autoStepClockSeconds);
+
+        autoStepButton.setText("Start Autostep");
+        autoStepButton.setFocusable(false);
+        autoStepButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        autoStepButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(autoStepButton);
 
         stage.setLayout(new java.awt.GridLayout(1, 0));
         scrollingStage.setViewportView(stage);
@@ -193,6 +208,8 @@ public class ElevatorUI extends javax.swing.JFrame {
         controls.holdButton = holdButton;
         controls.stepButton = stepButton;
         controls.callListTextArea = callListTextArea;
+        controls.autoStepButton = autoStepButton;
+        controls.autoStepClockSeconds = Float.parseFloat(autoStepClockSeconds.getValue().toString());
         
 //        Building building = Bootstrap.init((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), stage);
         Building building = new Building((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), controls);
@@ -219,6 +236,8 @@ public class ElevatorUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton autoStepButton;
+    private javax.swing.JSpinner autoStepClockSeconds;
     private javax.swing.JFrame callListFrame;
     private javax.swing.JScrollPane callListFrameScrollPane;
     private javax.swing.JTextArea callListTextArea;
@@ -227,6 +246,7 @@ public class ElevatorUI extends javax.swing.JFrame {
     private javax.swing.JLabel elevatorsLabel;
     private javax.swing.JMenu fileMenu;
     private javax.swing.JButton holdButton;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JLabel levelLabel;
     private javax.swing.JSpinner levelsInputNum;

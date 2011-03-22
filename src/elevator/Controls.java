@@ -16,5 +16,7 @@ public class Controls {
     public JButton holdButton;
     public JButton stepButton;
     public JTextArea callListTextArea;
+    public JButton autoStepButton;
+    public float autoStepClockSeconds;
 
 }
