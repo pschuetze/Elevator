@@ -55,4 +55,8 @@ public class CabinPanel extends Panel {
         direction = destLevelNum > currentLevel ? directionType.UP : directionType.DOWN;
         _elevator.getCallList().addCall(new CallListEntry(direction, destLevelNum));
     }
+
+    public JButton fetchButtonByNum(int num){
+        return _panelNumberButtons.get(num);
+    }
 }

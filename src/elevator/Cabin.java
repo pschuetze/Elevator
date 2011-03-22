@@ -5,6 +5,7 @@
 
 package elevator;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 /**
@@ -35,6 +36,10 @@ public class Cabin extends JPanel{
     public Cabin setCurrentLevel(int _currentLevel) {
         this._currentLevel = _currentLevel;
         return this;
+    }
+
+    public JButton fetchCabinPanelButtonByNum(int num){
+        return _cabinPanel.fetchButtonByNum(num);
     }
 
 }

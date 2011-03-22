@@ -17,12 +17,15 @@ public class Elevator extends JPanel {
     private HashMap<Integer, Level> _levelsList = new HashMap<Integer, Level>();
     private int _elevatorNum;
     private Cabin _cabin;
-    private CallList _callList = new CallList();
+    private CallList _callList;
+    private Drive drive;
 
-    public Elevator(int elevatorNum, int levelsNum) {
-        Level level;
-
+    public Elevator(int elevatorNum, int levelsNum, Controls controls) {
         setElevatorNum(elevatorNum).setLevels(levelsNum).setLayout(new java.awt.GridLayout(0, 1));
+
+        Level level;
+        _callList = new CallList(controls.callListTextArea, this);
+        drive = new Drive(controls, this);
 
         _cabin = new Cabin(this);
 
@@ -43,8 +46,12 @@ public class Elevator extends JPanel {
         if (sourceLevelObj != desttLevelObj) { // in case of initial move at startup don't reenable the sparsepanel
             sourceLevelObj.remove(_cabin);
             sourceLevelObj.toggleSparsePanel(true);
+            _cabin.setCurrentLevel(destLevelNum);
         }
         desttLevelObj.add(_cabin);
+
+        
+
         repaint();
 
     }

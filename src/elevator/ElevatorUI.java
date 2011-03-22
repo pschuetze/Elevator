@@ -51,19 +51,36 @@ public class ElevatorUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        callListFrame = new javax.swing.JFrame();
         toolBar = new javax.swing.JToolBar();
         levelLabel = new javax.swing.JLabel();
         levelsInputNum = new javax.swing.JSpinner();
         elevatorsLabel = new javax.swing.JLabel();
         elevatorsInputNum = new javax.swing.JSpinner();
         startButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        holdButton = new javax.swing.JButton();
+        stepButton = new javax.swing.JButton();
+        scrollingStage = new javax.swing.JScrollPane();
         stage = new javax.swing.JPanel();
+        callListFrameScrollPane = new javax.swing.JScrollPane();
+        callListTextArea = new javax.swing.JTextArea();
         menuBar = new javax.swing.JMenuBar();
         fileMenu = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         editMenu = new javax.swing.JMenu();
+
+        callListFrame.setTitle("CallList");
+
+        javax.swing.GroupLayout callListFrameLayout = new javax.swing.GroupLayout(callListFrame.getContentPane());
+        callListFrame.getContentPane().setLayout(callListFrameLayout);
+        callListFrameLayout.setHorizontalGroup(
+            callListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 735, Short.MAX_VALUE)
+        );
+        callListFrameLayout.setVerticalGroup(
+            callListFrameLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -93,14 +110,25 @@ public class ElevatorUI extends javax.swing.JFrame {
         });
         toolBar.add(startButton);
 
-        jButton1.setText("Hold");
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(jButton1);
+        holdButton.setText("Hold");
+        holdButton.setEnabled(false);
+        holdButton.setFocusable(false);
+        holdButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        holdButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(holdButton);
+
+        stepButton.setText("Step");
+        stepButton.setEnabled(false);
+        stepButton.setFocusable(false);
+        stepButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        stepButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        toolBar.add(stepButton);
 
         stage.setLayout(new java.awt.GridLayout(1, 0));
-        jScrollPane1.setViewportView(stage);
+        scrollingStage.setViewportView(stage);
+
+        callListTextArea.setEditable(false);
+        callListFrameScrollPane.setViewportView(callListTextArea);
 
         fileMenu.setText("File");
 
@@ -124,21 +152,22 @@ public class ElevatorUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 709, Short.MAX_VALUE)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 697, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+            .addComponent(scrollingStage, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+            .addComponent(callListFrameScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 709, Short.MAX_VALUE))
+                .addGap(0, 711, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(toolBar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE))
+                .addComponent(scrollingStage, javax.swing.GroupLayout.PREFERRED_SIZE, 514, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(callListFrameScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 451, Short.MAX_VALUE))
+                .addGap(0, 689, Short.MAX_VALUE))
         );
 
         pack();
@@ -157,13 +186,21 @@ public class ElevatorUI extends javax.swing.JFrame {
         }
 
         startButton.setText("Restart");
+        stepButton.setEnabled(true);
+        holdButton.setEnabled(true);
+
+        Controls controls = new Controls();
+        controls.holdButton = holdButton;
+        controls.stepButton = stepButton;
+        controls.callListTextArea = callListTextArea;
         
 //        Building building = Bootstrap.init((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), stage);
-        Building building = new Building((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue());
-
+        Building building = new Building((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), controls);
 
         stage.removeAll();
         stage.add(building);
+
+//        CallListTextField.setText("Hello World");
 
         pack();
         System.out.println("(Re-) init succesful.");
@@ -182,18 +219,22 @@ public class ElevatorUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JFrame callListFrame;
+    private javax.swing.JScrollPane callListFrameScrollPane;
+    private javax.swing.JTextArea callListTextArea;
     private javax.swing.JMenu editMenu;
     private javax.swing.JSpinner elevatorsInputNum;
     private javax.swing.JLabel elevatorsLabel;
     private javax.swing.JMenu fileMenu;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton holdButton;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel levelLabel;
     private javax.swing.JSpinner levelsInputNum;
     private javax.swing.JMenuBar menuBar;
+    private javax.swing.JScrollPane scrollingStage;
     private javax.swing.JPanel stage;
     private javax.swing.JButton startButton;
+    private javax.swing.JButton stepButton;
     private javax.swing.JToolBar toolBar;
     // End of variables declaration//GEN-END:variables
 

@@ -4,8 +4,6 @@
  */
 package elevator;
 
-import javax.swing.JPanel;
-
 /**
  *
  * @author martin
@@ -13,7 +11,7 @@ import javax.swing.JPanel;
 public class Bootstrap {
 
     public static Building init(int levels, int elevators){
-         Building building = new Building(levels, elevators);
+         Building building = new Building(levels, elevators, new Controls());
          System.out.println("init succesfully");
          return building;
     }
