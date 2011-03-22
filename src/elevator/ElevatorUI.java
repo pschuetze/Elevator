@@ -58,11 +58,13 @@ public class ElevatorUI extends javax.swing.JFrame {
         elevatorsLabel = new javax.swing.JLabel();
         elevatorsInputNum = new javax.swing.JSpinner();
         startButton = new javax.swing.JButton();
-        holdButton = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JToolBar.Separator();
         stepButton = new javax.swing.JButton();
+        jSeparator2 = new javax.swing.JToolBar.Separator();
         jLabel1 = new javax.swing.JLabel();
         autoStepClockSeconds = new javax.swing.JSpinner();
         autoStepButton = new javax.swing.JButton();
+        holdButton = new javax.swing.JButton();
         scrollingStage = new javax.swing.JScrollPane();
         stage = new javax.swing.JPanel();
         callListFrameScrollPane = new javax.swing.JScrollPane();
@@ -112,13 +114,7 @@ public class ElevatorUI extends javax.swing.JFrame {
             }
         });
         toolBar.add(startButton);
-
-        holdButton.setText("Hold");
-        holdButton.setEnabled(false);
-        holdButton.setFocusable(false);
-        holdButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        holdButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        toolBar.add(holdButton);
+        toolBar.add(jSeparator1);
 
         stepButton.setText("Step");
         stepButton.setEnabled(false);
@@ -126,18 +122,40 @@ public class ElevatorUI extends javax.swing.JFrame {
         stepButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         stepButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
         toolBar.add(stepButton);
+        toolBar.add(jSeparator2);
 
         jLabel1.setText("AutoStep clock seconds:");
         toolBar.add(jLabel1);
 
         autoStepClockSeconds.setModel(new javax.swing.SpinnerNumberModel(Float.valueOf(1.0f), Float.valueOf(0.1f), null, Float.valueOf(0.5f)));
+        autoStepClockSeconds.setEnabled(false);
         toolBar.add(autoStepClockSeconds);
 
         autoStepButton.setText("Start Autostep");
+        autoStepButton.setEnabled(false);
         autoStepButton.setFocusable(false);
         autoStepButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        autoStepButton.setPreferredSize(new java.awt.Dimension(140, 29));
         autoStepButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        autoStepButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                autoStepButtonActionPerformed(evt);
+            }
+        });
         toolBar.add(autoStepButton);
+
+        holdButton.setText("Hold");
+        holdButton.setEnabled(false);
+        holdButton.setFocusable(false);
+        holdButton.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        holdButton.setPreferredSize(new java.awt.Dimension(71, 29));
+        holdButton.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        holdButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                holdButtonActionPerformed(evt);
+            }
+        });
+        toolBar.add(holdButton);
 
         stage.setLayout(new java.awt.GridLayout(1, 0));
         scrollingStage.setViewportView(stage);
@@ -167,11 +185,11 @@ public class ElevatorUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
-            .addComponent(scrollingStage, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
-            .addComponent(callListFrameScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 711, Short.MAX_VALUE)
+            .addComponent(toolBar, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+            .addComponent(scrollingStage, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+            .addComponent(callListFrameScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGap(0, 711, Short.MAX_VALUE))
+                .addGap(0, 830, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -202,14 +220,18 @@ public class ElevatorUI extends javax.swing.JFrame {
 
         startButton.setText("Restart");
         stepButton.setEnabled(true);
-        holdButton.setEnabled(true);
+        autoStepButton.setEnabled(true);
+        autoStepButton.setText("Start Autostep");
+        holdButton.setEnabled(false);
+        holdButton.setText("Hold");
+        autoStepClockSeconds.setEnabled(true);
 
         Controls controls = new Controls();
         controls.holdButton = holdButton;
         controls.stepButton = stepButton;
         controls.callListTextArea = callListTextArea;
         controls.autoStepButton = autoStepButton;
-        controls.autoStepClockSeconds = Float.parseFloat(autoStepClockSeconds.getValue().toString());
+        controls.autoStepClockSeconds = autoStepClockSeconds;
         
 //        Building building = Bootstrap.init((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), stage);
         Building building = new Building((Integer) levelsInputNum.getValue(), (Integer) elevatorsInputNum.getValue(), controls);
@@ -223,6 +245,14 @@ public class ElevatorUI extends javax.swing.JFrame {
         System.out.println("(Re-) init succesful.");
 
     }//GEN-LAST:event_startButtonActionPerformed
+
+    private void holdButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_holdButtonActionPerformed
+       // ;
+    }//GEN-LAST:event_holdButtonActionPerformed
+
+    private void autoStepButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_autoStepButtonActionPerformed
+        //
+    }//GEN-LAST:event_autoStepButtonActionPerformed
 
    /**
     * @param args the command line arguments
@@ -248,6 +278,8 @@ public class ElevatorUI extends javax.swing.JFrame {
     private javax.swing.JButton holdButton;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JToolBar.Separator jSeparator1;
+    private javax.swing.JToolBar.Separator jSeparator2;
     private javax.swing.JLabel levelLabel;
     private javax.swing.JSpinner levelsInputNum;
     private javax.swing.JMenuBar menuBar;

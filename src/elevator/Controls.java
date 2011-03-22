@@ -6,6 +6,7 @@
 package elevator;
 
 import javax.swing.JButton;
+import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 
 /**
@@ -17,6 +18,6 @@ public class Controls {
     public JButton stepButton;
     public JTextArea callListTextArea;
     public JButton autoStepButton;
-    public float autoStepClockSeconds;
+    public JSpinner autoStepClockSeconds;
 
 }

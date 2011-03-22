@@ -56,9 +56,10 @@ public class CallList {
             callListDown.add(callListEntry.getDestinationLevel());
         }
 
-        updateCallListArea();
+        if(_currentDrive.equals(directionType.STANDBY))
+            _currentDrive = callListEntry.getDirection();
 
-//        System.out.println(getNextStop());
+        updateCallListArea();
 
         return this;
     }
